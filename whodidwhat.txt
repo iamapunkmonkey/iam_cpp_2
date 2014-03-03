@@ -1,0 +1,10 @@
+C++ poker created by Neil Inglese and Jordan Max
+--------------------------------------------------
+
+Neil -
+sorted classes into seperate cpp and .h files
+created templated class in deck.h and passing type deck to create the deck and then shuffling cards
+
+Jordan -
+Refacatoring of code, and begun cleaning up variables and error fixing
+created highcard function to determine winner if hands are tied
