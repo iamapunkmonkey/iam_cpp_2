@@ -2,7 +2,7 @@
 
 // Use some common namespaces to simplify the code
 
-
+using namespace Windows::ApplicationModel;
 using namespace Windows::ApplicationModel::Core; //IFrameworkView, CoreApplicationView, TypedEventHandler, IFrameWorkViewSource, CoreApplication
 using namespace Windows::ApplicationModel::Activation; // TypedEventHandler, IActivatedEventArgs
 using namespace Windows::UI::Core; // CoreWindow
@@ -12,6 +12,7 @@ using namespace Windows::Foundation; //CoreApplicationView, TypedEventHandler
 using namespace Windows::Graphics::Display; //nothing yet
 using namespace Platform; // String, App
 
+bool WindowClosed;
 
 // the class definition for the core "framework" of our app
 ref class App sealed : public IFrameworkView
@@ -23,19 +24,31 @@ public:
 		// set the OnActivated function to handle to Activated "event"
 		AppView->Activated += ref new TypedEventHandler
 			<CoreApplicationView^, IActivatedEventArgs^>(this, &App::OnActivated);
+
+		CoreApplication::Suspending +=
+			ref new EventHandler<SuspendingEventArgs^>(this, &App::Suspending);
+		CoreApplication::Resuming +=
+			ref new EventHandler<Object^>(this, &App::Resuming);
+
+		WindowClosed = false; //init to false
 	}
 
 	//we wrote a function to handle the event, but now we must inform windows that we wrote it.
 	//Something to handle the "ProcessEvents" class we called in the Run() method
 	virtual void SetWindow(CoreWindow^ Window) {
-		Window->PointerPressed += ref new TypedEventHandler
-			<CoreWindow^, PointerEventArgs^>(this, &App::PointerPressed);
+		Window->KeyDown += ref new TypedEventHandler
+			<CoreWindow^, KeyEventArgs^>(this, &App::KeyDown);
+
+		Window->Closed += ref new TypedEventHandler
+			<CoreWindow^, CoreWindowEventArgs^>(this, &App::Closed);
 	}
 	virtual void Load(String^ EntryPoint) {}
 	virtual void Run() {
 		CoreWindow^ Window = CoreWindow::GetForCurrentThread();
 
-		Window->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessUntilQuit); 
+		Window->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessUntilQuit); //**ProcessUntilQuit does not have much affect on games/apps, now we learn about other functions that are used when we need 3D rendered objects
+		//see below while loop for example
+		
 		//CoreProcessEventsOption is a state machine, it has 4 different enumerated states
 		//ProcessOneIfPresent, ProcessAllIfPresent, ProcessOneAndAllPending, ProcessUntilQuit 
 		//each do different things so if you need to know which one to use
@@ -51,6 +64,16 @@ public:
 
 		//****ProcessUntilQuit : Dispatch all events, and repeat.Do not return until Windows shuts 
 		//the program down.
+
+		// repeat until window closes
+		while (!WindowClosed)
+		{
+			Window->Dispatcher->ProcessEvents(CoreProcessEventsOption::ProcessAllIfPresent); //**as opposed to ProcessUntilQuit, ProcessAllIfPresent
+
+			// Run game code here
+			// ...
+			// ...
+		}
 	}
 	virtual void Uninitialize() {}
 
@@ -80,6 +103,18 @@ public:
 		MessageDialog Dialog("Thank you for noticing this notice.", "Notice!");
 		Dialog.ShowAsync();
 	}
+
+	void KeyDown(CoreWindow^ Window, KeyEventArgs^ Args)
+	{
+		if (Args->VirtualKey == VirtualKey::A)
+		{
+			// do something...
+			MessageDialog Dialog("Thank you for noticing this notice.", "Notice!");
+			Dialog.ShowAsync();
+		}
+
+	}
+
 	//in Unity3D this would be the equivalent to the following code:
 	//String moveUp = w;
 	//void Update()
@@ -88,6 +123,18 @@ public:
 	//   ....
 	//}
 
+	//Something to think about is how to put your program in a "Suspend" state since we should learn how to utilize the life-cycle.
+	//The suspend state will be in charge of saving any game or app data that you want to store.
+	//The tutorial I am following explains that the Suspend state is now a Window event, but a Application event, although they are similair. 
+	//refer to Initialize()->CoreApplication::Suspend... syntax
+	void Suspending(Object^ Sender, SuspendingEventArgs^ Args) {}
+
+	void Resuming(Object^ Sender, Object^ Args) {}
+
+	void Closed(CoreWindow^ sender, CoreWindowEventArgs^ args)
+	{
+		WindowClosed = true;    // Time to end the endless loop
+	}
 };
 
 

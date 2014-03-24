@@ -14,52 +14,52 @@
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="c:\users\al gore rhythm\documents\visual studio 2013\Projects\FirstDXApp\Debug\FirstDXApp\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\Debug\FirstDXApp\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2014-03-24T18:19:13.258</Modified>
+      <Modified>2014-03-24T20:11:15.668</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="c:\users\al gore rhythm\documents\visual studio 2013\Projects\FirstDXApp\Debug\FirstDXApp\FirstDXApp.exe">
+    <AppxPackagedFile Include="C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\Debug\FirstDXApp\FirstDXApp.exe">
       <PackagePath>FirstDXApp.exe</PackagePath>
-      <Modified>2014-03-24T18:19:43.479</Modified>
+      <Modified>2014-03-24T20:27:54.033</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\al gore rhythm\documents\visual studio 2013\Projects\FirstDXApp\Debug\FirstDXApp\FirstDXApp.winmd">
+    <AppxPackagedFile Include="C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\Debug\FirstDXApp\FirstDXApp.winmd">
       <PackagePath>FirstDXApp.winmd</PackagePath>
-      <Modified>2014-03-24T18:19:12.472</Modified>
+      <Modified>2014-03-24T20:11:14.406</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\al gore rhythm\documents\visual studio 2013\Projects\FirstDXApp\Debug\FirstDXApp\SamplePixelShader.cso">
+    <AppxPackagedFile Include="C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\Debug\FirstDXApp\SamplePixelShader.cso">
       <PackagePath>SamplePixelShader.cso</PackagePath>
-      <Modified>2014-03-24T18:19:06.982</Modified>
+      <Modified>2014-03-24T20:11:08.923</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\al gore rhythm\documents\visual studio 2013\Projects\FirstDXApp\Debug\FirstDXApp\SampleVertexShader.cso">
+    <AppxPackagedFile Include="C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\Debug\FirstDXApp\SampleVertexShader.cso">
       <PackagePath>SampleVertexShader.cso</PackagePath>
-      <Modified>2014-03-24T18:19:07.037</Modified>
+      <Modified>2014-03-24T20:11:08.973</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\Users\al gore rhythm\documents\visual studio 2013\Projects\FirstDXApp\FirstDXApp\Assets\Logo.png">
+    <AppxPackagedFile Include="C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\FirstDXApp\Assets\Logo.png">
       <PackagePath>Assets\Logo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2013-07-23T12:01:02.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\Users\al gore rhythm\documents\visual studio 2013\Projects\FirstDXApp\FirstDXApp\Assets\SmallLogo.png">
+    <AppxPackagedFile Include="C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\FirstDXApp\Assets\SmallLogo.png">
       <PackagePath>Assets\SmallLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2013-07-23T12:01:02.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\Users\al gore rhythm\documents\visual studio 2013\Projects\FirstDXApp\FirstDXApp\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\FirstDXApp\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2013-07-23T12:01:02.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\Users\al gore rhythm\documents\visual studio 2013\Projects\FirstDXApp\FirstDXApp\Assets\SplashScreen.png">
+    <AppxPackagedFile Include="C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\FirstDXApp\Assets\SplashScreen.png">
       <PackagePath>Assets\SplashScreen.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
       <Modified>2013-07-23T12:01:02.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="c:\users\al gore rhythm\documents\visual studio 2013\Projects\FirstDXApp\Debug\FirstDXApp\resources.pri">
+    <AppxPackagedFile Include="C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\Debug\FirstDXApp\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2014-03-24T18:19:13.119</Modified>
+      <Modified>2014-03-24T20:11:15.354</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

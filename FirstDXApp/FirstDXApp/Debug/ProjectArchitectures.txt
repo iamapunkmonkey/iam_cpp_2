@@ -1,1 +1,1 @@
-c:\Users\al gore rhythm\documents\visual studio 2013\Projects\FirstDXApp\FirstDXApp\FirstDXApp.vcxproj;x86
+C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\FirstDXApp\FirstDXApp.vcxproj;x86
