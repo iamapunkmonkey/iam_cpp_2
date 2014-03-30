@@ -8,3 +8,13 @@ created templated class in deck.h and passing type deck to create the deck and t
 Jordan -
 Refacatoring of code, and begun cleaning up variables and error fixing
 created highcard function to determine winner if hands are tied
+
+-- March 30, 2014
+
+Neil-
+
+Neil has been extensively working on our previous Poker program, cleaning up all the code and making it more efficient.
+
+Jordan-
+Jordan has been working on the beginning stages of our DirectX version of our console poker game. So far he has drawn out the triangles needed to be placeholders for cards.
+Next he will be figuring out how to upload images to use for cards. 
