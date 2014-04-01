@@ -1,1 +1,0 @@
-C:\Users\Al Gore Rhythm\Desktop\Direct3D tutorial sample\C++\Lesson2.Triangles\Lesson2.Triangles.vcxproj;x86
