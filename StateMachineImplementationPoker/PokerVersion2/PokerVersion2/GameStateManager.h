@@ -16,7 +16,10 @@ enum GameState
 	GS_Idle = 1,
 	GS_Flop = 2,
 	GS_River = 3,
-	GS_Turn = 4
+	GS_Turn = 4,
+	GS_Post = 5,
+	GS_Checks = 6,
+	GS_Kill = 7
 	//IDLE will be called when game is waiting for user to input
 };
 
