@@ -15,6 +15,9 @@ public:
 	void shuffle_state();
 	void deal_state();
 	void flop_state();
+	void river_state();
+	void turn_state();
+	void idle_state();
 };
 
 class State
@@ -38,6 +41,21 @@ public:
 		cout << " already FLOP\n";
 	}
 
+	virtual void river_state(Machine *m)
+	{
+		cout << " already RIVER\n";
+	}
+
+	virtual void turn_state(Machine *m)
+	{
+		cout << " already TURN\n";
+	}
+
+	virtual void idle_state(Machine *m)
+	{
+		cout << " already IDLE\n";
+	}
+
 
 };
 
@@ -57,6 +75,9 @@ public:
 	void shuffle_state(Machine *m);
 	void deal_state(Machine *m);
 	void flop_state(Machine *m);
+	void river_state(Machine *m);
+	void turn_state(Machine *m);
+	//void idle_state(Machine *m);
 };
 
 class SHUFFLE_STATE : public State
@@ -74,6 +95,9 @@ public:
 	void pregame_state(Machine *m);
 	void deal_state(Machine *m);
 	void flop_state(Machine *m);
+	void river_state(Machine *m);
+	void turn_state(Machine *m);
+	//void idle_state(Machine *m);
 };
 
 class DEAL_STATE : public State
@@ -91,6 +115,9 @@ public:
 	void pregame_state(Machine *m);
 	void shuffle_state(Machine *m);
 	void flop_state(Machine *m);
+	void river_state(Machine *m);
+	void turn_state(Machine *m);
+	//void idle_state(Machine *m);
 };
 
 class FLOP_STATE : public State
@@ -108,5 +135,48 @@ public:
 	void pregame_state(Machine *m);
 	void shuffle_state(Machine *m);
 	void deal_state(Machine *m);
+	void river_state(Machine *m);
+	void turn_state(Machine *m);
+	//void idle_state(Machine *m);
+};
+
+class TURN_STATE : public State
+{
+public:
+	TURN_STATE()
+	{
+		cout << " FLOP_STATE-ctor ";
+	};
+	~TURN_STATE()
+	{
+		cout << " dtor-FLOP_STATE\n";
+	};
+
+	void pregame_state(Machine *m);
+	void shuffle_state(Machine *m);
+	void deal_state(Machine *m);
+	void flop_state(Machine *m);
+	void river_state(Machine *m);
+	//void idle_state(Machine *m);
+};
+
+class RIVER_STATE : public State
+{
+public:
+	RIVER_STATE()
+	{
+		cout << " FLOP_STATE-ctor ";
+	};
+	~RIVER_STATE()
+	{
+		cout << " dtor-FLOP_STATE\n";
+	};
+
+	void pregame_state(Machine *m);
+	void shuffle_state(Machine *m);
+	void deal_state(Machine *m);
+	void flop_state(Machine *m);
+	void turn_state(Machine *m);
+	//void idle_state(Machine *m);
 };
 #endif
