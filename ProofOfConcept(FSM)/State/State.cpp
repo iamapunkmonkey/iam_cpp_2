@@ -23,6 +23,10 @@ void Machine::flop_state()
 	current->flop_state(this);
 }
 
+void Machine::setCurrent(State *s)
+{
+	current = s;
+}
 
 Machine::Machine()
 {
@@ -62,6 +66,14 @@ void PREGAME_STATE::flop_state(Machine *m)
 //****************************Shuffle****************************//
 //***************************************************************//
 
+void SHUFFLE_STATE::pregame_state(Machine *m)
+{
+	cout << " going from SHUFFLE_STATE to DEAL_STATE";
+	cout << "\n";
+	m->setCurrent(new PREGAME_STATE()); //SWITCHES STATE TO DEAL_STATE CREATES NEW INSTANCE
+	delete this;//DELETES SHUFFLE_STATE
+}
+
 void SHUFFLE_STATE::deal_state(Machine *m)
 {
 	cout << " going from SHUFFLE_STATE to DEAL_STATE";
@@ -78,6 +90,65 @@ void SHUFFLE_STATE::flop_state(Machine *m)
 	delete this;
 }
 
+//***************************************************************//
+//*****************************DEAL*****************************//
+//***************************************************************//
+
+void DEAL_STATE::pregame_state(Machine *m)
+{
+	cout << " going from SHUFFLE_STATE to PREGAME_STATE";
+	cout << "\n";
+	m->setCurrent(new PREGAME_STATE()); //SWITCHES STATE TO DEAL_STATE CREATES NEW INSTANCE
+	delete this;//DELETES DEAL_STATE
+}
+
+void DEAL_STATE::shuffle_state(Machine *m)
+{
+	cout << " going from DEAL_STATE to SHUFFLE_STATE";
+	cout << "\n";
+	m->setCurrent(new SHUFFLE_STATE()); //SWITCHES STATE TO SHUFFLE_STATE CREATES NEW INSTANCE
+	delete this; //DELETES DEAL_STATE
+}
+
+void DEAL_STATE::flop_state(Machine *m)
+{
+	cout << " going from DEAL_STATE to FLOP_STATE";
+	cout << "\n";
+	m->setCurrent(new SHUFFLE_STATE()); //SWITCHES STATE TO SHUFFLE_STATE CREATES NEW INSTANCE
+	delete this; //DELETES DEAL_STATE
+}
+
+//***************************************************************//
+//*****************************FLOP******************************//
+//***************************************************************//
+
+void FLOP_STATE::pregame_state(Machine *m)
+{
+	cout << "\n";
+	cout << " going from SHUFFLE_STATE to DEAL_STATE";
+	cout << "\n";
+	m->setCurrent(new PREGAME_STATE()); //SWITCHES STATE TO DEAL_STATE CREATES NEW INSTANCE
+	delete this;//DELETES FLOP_STATE
+}
+
+void FLOP_STATE::shuffle_state(Machine *m)
+{
+	cout << "\n";
+	cout << " going from FLOP_STATE to SHUFFLE_STATE";
+	cout << "\n";
+	m->setCurrent(new SHUFFLE_STATE()); //SWITCHES STATE TO SHUFFLE_STATE CREATES NEW INSTANCE
+	delete this; //DELETES FLOP_STATE
+}
+
+
+void FLOP_STATE::deal_state(Machine *m)
+{
+	cout << "\n";
+	cout << " going from FLOP_STATE to DEAL_STATE";
+	cout << "\n";
+	m->setCurrent(new DEAL_STATE()); //SWITCHES STATE TO SHUFFLE_STATE CREATES NEW INSTANCE
+	delete this; //DELETES FLOP_STATE
+}
 int main()
 {
 	void(Machine:: *ptrs[])() =
