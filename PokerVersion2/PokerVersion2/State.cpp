@@ -29,7 +29,7 @@ void Machine::setCurrent(State *s)
 
 Machine::Machine()
 {
-	current = new DEAL_STATE();
+	current = new PREGAME_STATE();
 	cout << '\n';
 }
 
@@ -39,8 +39,9 @@ Machine::Machine()
 
 void PREGAME_STATE::shuffle_state(Machine *m)
 {
-	cout << " going from PREGAME_STATE to SHUFFLE_STATE";
-	cout << "\n";
+	//cout << " going from PREGAME_STATE to SHUFFLE_STATE";
+	//cout << "\n";
+	
 	m->setCurrent(new SHUFFLE_STATE()); //SWITCHES STATE TO SHUFFLE_STATE CREATES NEW INSTANCE
 	delete this;//DELETES PREGAME_STATE
 }

@@ -2,6 +2,7 @@
 #define STATE_H
 
 #include <iostream>
+#include "Aesthetics.h"
 
 using namespace std;
 
@@ -20,22 +21,23 @@ public:
 class State
 {
 public:
+	Aesthetics aesthetics;
 	virtual void pregame_state(Machine *m)
 	{
-		cout << " already PREGAME\n";
+		//cout << " already PREGAME\n";
 	}
 
 	virtual void shuffle_state(Machine *m)
 	{
-		cout << " already SHUFFLE\n";
+		//cout << " already SHUFFLE\n";
 	}
 	virtual void deal_state(Machine *m)
 	{
-		cout << " already DEAL\n";
+		//cout << " already DEAL\n";
 	}
 	virtual void flop_state(Machine *m)
 	{
-		cout << " already FLOP\n";
+		//cout << " already FLOP\n";
 	}
 
 
@@ -47,6 +49,10 @@ public:
 	PREGAME_STATE()
 	{
 		cout << " PREGAME_STATE-ctor ";
+		aesthetics.SetWindow(100, 55); // Set windows size
+		aesthetics.header(); // calling our game header
+		aesthetics.MainMenu(); // calling our menu system
+		cout << "PREGAME STATE YAY!";
 	}
 
 	~PREGAME_STATE()

@@ -31,7 +31,6 @@ public:
 	void MainMenu();
 	void Credits();
 
-
 	//
 
 };
