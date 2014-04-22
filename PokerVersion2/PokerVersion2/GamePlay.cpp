@@ -4,6 +4,7 @@
 #include "Deck.h"
 #include "DrawCard.h"
 #include "Hands.h"
+#include "State.h"
 
 #define MaxNo_Menu 5
 #define MaxNo_Menu1 3
@@ -165,13 +166,16 @@ void GamePlay::Flop()
 
 void GamePlay::Turn()
 {
-	Setup();
-	hands.tablecards(deck, 9);
-	Cards();
-	getValues();
-	uiText();
-	betSystem();
-	River();
+	Machine m;
+
+	m.pregame_state();
+	//Setup();
+	//hands.tablecards(deck, 9);
+	//Cards();
+	//getValues();
+	//uiText();
+	//betSystem();
+	//River();
 }
 
 void GamePlay::River()

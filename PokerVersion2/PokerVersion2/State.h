@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Aesthetics.h"
+#include "GamePlay.h"
 
 using namespace std;
 
@@ -22,6 +23,7 @@ class State
 {
 public:
 	Aesthetics aesthetics;
+	GamePlay gp;
 	virtual void pregame_state(Machine *m)
 	{
 		//cout << " already PREGAME\n";
@@ -49,6 +51,7 @@ public:
 	PREGAME_STATE()
 	{
 		cout << " PREGAME_STATE-ctor ";
+		gp.Clear();
 		aesthetics.SetWindow(100, 55); // Set windows size
 		aesthetics.header(); // calling our game header
 		aesthetics.MainMenu(); // calling our menu system
