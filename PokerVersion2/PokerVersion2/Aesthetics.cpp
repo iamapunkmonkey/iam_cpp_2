@@ -3,18 +3,7 @@
 #include "Checks.h"
 #include "Poker.h"
 #include "DrawCard.h"
-#include "State.h"
-
-
-
-
 HANDLE con = GetStdHandle(STD_OUTPUT_HANDLE);
-#define MaxNo_Menu 5
-#define MaxNo_Menu1 3
-#define MaxNo_Menu2 3
-
-
-
 void Aesthetics::gotoxy(int x, int y)
 {
 	COORD Coord;
@@ -32,8 +21,8 @@ void Aesthetics::textattr(int color)
 void Aesthetics::mainText()
 {
 
-	
-	
+
+
 	textattr(11);
 	gotoxy(33, 38);
 	printf("%s", "Your Cards");
@@ -252,16 +241,16 @@ void Aesthetics::MainMenu()
 void Aesthetics::Credits()
 {
 	system("cls");
-	textattr(8);cout << "		 _________ ";textattr(12);cout << "  _________   ";textattr(8);cout << "_________   ";textattr(12);cout << "__________" << endl;
-	textattr(8);cout << "	        /         \\";textattr(12);cout << " /         \\ ";textattr(8);cout << "/         \\ ";textattr(12);cout << "/          \\" << endl;
-	textattr(8);cout << "                 Jordan Max ";textattr(12);cout << " A          ";textattr(8);cout << " K          ";textattr(12);cout << "Neil Inglese" << endl;
-	textattr(8);cout << "                     ,      ";textattr(12);cout << "    _ _     ";textattr(8);cout << "     _      ";textattr(12);cout << "            " << endl;
-	textattr(8);cout << "                    / \\     ";textattr(12);cout << "   / ^ \\   ";textattr(8);cout << "     (_)    ";textattr(12);cout << "      /\\     " << endl;
-	textattr(8);cout << "                   (_ _)    ";textattr(12);cout << "   \\   /   ";textattr(8);cout << "    (_)_)   ";textattr(12);cout << "     <  >    " << endl;
-	textattr(8);cout << "                    /_\\     ";textattr(12);cout << "    \\ /    ";textattr(8);cout << "     /_\\    ";textattr(12);cout << "      \\/     " << endl;
-	textattr(8);cout << "                            ";textattr(12);cout << "     `     ";textattr(8);cout << "            ";textattr(12);cout << "             " << endl;
-	textattr(8);cout << "                 jdmdev.net  ";textattr(12);cout << "         A ";textattr(8);cout << "          K";textattr(12);cout << " neildev.net " << endl;
-	textattr(8);cout << "		\\_________/ ";textattr(12);cout << "\\_________/ ";textattr(8);cout << "\\_________/";textattr(12);cout << " \\__________/" << endl;cout << "" << endl;
+	textattr(8); cout << "		 _________ "; textattr(12); cout << "  _________   "; textattr(8); cout << "_________   "; textattr(12); cout << "__________" << endl;
+	textattr(8); cout << "	        /         \\"; textattr(12); cout << " /         \\ "; textattr(8); cout << "/         \\ "; textattr(12); cout << "/          \\" << endl;
+	textattr(8); cout << "                 Jordan Max "; textattr(12); cout << " A          "; textattr(8); cout << " K          "; textattr(12); cout << "Neil Inglese" << endl;
+	textattr(8); cout << "                     ,      "; textattr(12); cout << "    _ _     "; textattr(8); cout << "     _      "; textattr(12); cout << "            " << endl;
+	textattr(8); cout << "                    / \\     "; textattr(12); cout << "   / ^ \\   "; textattr(8); cout << "     (_)    "; textattr(12); cout << "      /\\     " << endl;
+	textattr(8); cout << "                   (_ _)    "; textattr(12); cout << "   \\   /   "; textattr(8); cout << "    (_)_)   "; textattr(12); cout << "     <  >    " << endl;
+	textattr(8); cout << "                    /_\\     "; textattr(12); cout << "    \\ /    "; textattr(8); cout << "     /_\\    "; textattr(12); cout << "      \\/     " << endl;
+	textattr(8); cout << "                            "; textattr(12); cout << "     `     "; textattr(8); cout << "            "; textattr(12); cout << "             " << endl;
+	textattr(8); cout << "                 jdmdev.net  "; textattr(12); cout << "         A "; textattr(8); cout << "          K"; textattr(12); cout << " neildev.net " << endl;
+	textattr(8); cout << "		\\_________/ "; textattr(12); cout << "\\_________/ "; textattr(8); cout << "\\_________/"; textattr(12); cout << " \\__________/" << endl; cout << "" << endl;
 }
 
 void Aesthetics::SetWindow(int Width, int Height)

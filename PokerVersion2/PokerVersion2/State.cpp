@@ -2,6 +2,8 @@
 //
 #include "State.h"
 
+
+Hands hand;
 void Machine::pregame_state()
 {
 	current->pregame_state(this);
@@ -41,7 +43,6 @@ void PREGAME_STATE::shuffle_state(Machine *m)
 {
 	//cout << " going from PREGAME_STATE to SHUFFLE_STATE";
 	//cout << "\n";
-	
 	m->setCurrent(new SHUFFLE_STATE()); //SWITCHES STATE TO SHUFFLE_STATE CREATES NEW INSTANCE
 	delete this;//DELETES PREGAME_STATE
 }
@@ -90,6 +91,11 @@ void SHUFFLE_STATE::flop_state(Machine *m)
 	delete this;
 }
 
+void SHUFFLE_STATE::setDeck(vector<string>& temp)
+{
+	temp = hand.createdeck(temp);
+}
+
 //***************************************************************//
 //*****************************DEAL*****************************//
 //***************************************************************//
@@ -112,10 +118,7 @@ void DEAL_STATE::shuffle_state(Machine *m)
 
 void DEAL_STATE::flop_state(Machine *m)
 {
-	cout << " going from DEAL_STATE to FLOP_STATE";
-	cout << "\n";
-	m->setCurrent(new SHUFFLE_STATE()); //SWITCHES STATE TO SHUFFLE_STATE CREATES NEW INSTANCE
-	delete this; //DELETES DEAL_STATE
+
 }
 
 //***************************************************************//

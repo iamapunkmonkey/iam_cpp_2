@@ -4,25 +4,26 @@
 #include "Poker.h"
 
 
+
 Checks::Checks()
 {
 
 }
-int Checks::ispair(vector<int> dvalues)
+int Checks::ispair(vector<int> determineValues)
 {
-	vector<int> test;
+	test.clear();
 
-	sort(dvalues.begin(), dvalues.end());
+	sort(determineValues.begin(), determineValues.end());
 
-	for (size_t z = 0; z < dvalues.size(); z++)
+	for (size_t z = 0; z < determineValues.size(); z++)
 	{
-		for (size_t j = 0; j < dvalues.size(); j++)
+		for (size_t j = 0; j < determineValues.size(); j++)
 		{
 			if (j != z)
 			{
-				if (dvalues[z] == dvalues[j])
+				if (determineValues[z] == determineValues[j])
 				{
-					test.push_back(dvalues[z]);
+					test.push_back(determineValues[z]);
 
 				}
 			}
@@ -42,22 +43,21 @@ int Checks::ispair(vector<int> dvalues)
 		return 0;
 }
 
-int Checks::flush(vector<char> dsuits)
+int Checks::flush(vector<char> determineSuits)
 {
-	vector<int> test;
 	test.clear();
 	
-	sort(dsuits.begin(), dsuits.end());
+	sort(determineSuits.begin(), determineSuits.end());
 
-	for (size_t z = 0; z < dsuits.size(); z++)
+	for (size_t z = 0; z < determineSuits.size(); z++)
 	{
-		for (size_t j = 1; j < dsuits.size(); j++)
+		for (size_t j = 1; j < determineSuits.size(); j++)
 		{
 			if (j != z)
 			{
-				if (dsuits[z] == dsuits[j])
+				if (determineSuits[z] == determineSuits[j])
 				{
-					test.push_back(dvalues[j]);
+					test.push_back(determineValues[j]);
 
 				}
 			}
@@ -75,33 +75,33 @@ int Checks::flush(vector<char> dsuits)
 
 }
 //working
-int Checks::straight(vector<int>dvalues)
+int Checks::straight(vector<int>determineValues)
 {
-	sort(dvalues.begin(), dvalues.end());
+	sort(determineValues.begin(), determineValues.end());
 
-	if (dvalues.size() == 5)
+	if (determineValues.size() == 5)
 	{
-		if ((dvalues[4] - dvalues[3] == 1) && (dvalues[3] - dvalues[2] == 1) && (dvalues[2] - dvalues[1] == 1) && (dvalues[1] - dvalues[0] == 1))
+		if ((determineValues[4] - determineValues[3] == 1) && (determineValues[3] - determineValues[2] == 1) && (determineValues[2] - determineValues[1] == 1) && (determineValues[1] - determineValues[0] == 1))
 			return 1;
 		else
 			return 0;
 	}
-	if (dvalues.size() == 6)
+	if (determineValues.size() == 6)
 	{
-		if ((dvalues[4] - dvalues[3] == 1) && (dvalues[3] - dvalues[2] == 1) && (dvalues[2] - dvalues[1] == 1) && (dvalues[1] - dvalues[0] == 1))
+		if ((determineValues[4] - determineValues[3] == 1) && (determineValues[3] - determineValues[2] == 1) && (determineValues[2] - determineValues[1] == 1) && (determineValues[1] - determineValues[0] == 1))
 			return 1;
-		else if ((dvalues[5] - dvalues[4] == 1) && (dvalues[4] - dvalues[3] == 1) && (dvalues[3] - dvalues[2] == 1) && (dvalues[2] - dvalues[1] == 1))
+		else if ((determineValues[5] - determineValues[4] == 1) && (determineValues[4] - determineValues[3] == 1) && (determineValues[3] - determineValues[2] == 1) && (determineValues[2] - determineValues[1] == 1))
 			return 1;
 		else
 			return 0;
 	}
-	if (dvalues.size() == 7)
+	if (determineValues.size() == 7)
 	{
-		if ((dvalues[4] - dvalues[3] == 1) && (dvalues[3] - dvalues[2] == 1) && (dvalues[2] - dvalues[1] == 1) && (dvalues[1] - dvalues[0] == 1))
+		if ((determineValues[4] - determineValues[3] == 1) && (determineValues[3] - determineValues[2] == 1) && (determineValues[2] - determineValues[1] == 1) && (determineValues[1] - determineValues[0] == 1))
 			return 1;
-		else if ((dvalues[5] - dvalues[4] == 1) && (dvalues[4] - dvalues[3] == 1) && (dvalues[3] - dvalues[2] == 1) && (dvalues[2] - dvalues[1] == 1))
+		else if ((determineValues[5] - determineValues[4] == 1) && (determineValues[4] - determineValues[3] == 1) && (determineValues[3] - determineValues[2] == 1) && (determineValues[2] - determineValues[1] == 1))
 			return 1;
-		else if ((dvalues[6] - dvalues[5] == 1) && (dvalues[5] - dvalues[4] == 1) && (dvalues[4] - dvalues[3] == 1) && (dvalues[3] - dvalues[2] == 1))
+		else if ((determineValues[6] - determineValues[5] == 1) && (determineValues[5] - determineValues[4] == 1) && (determineValues[4] - determineValues[3] == 1) && (determineValues[3] - determineValues[2] == 1))
 			return 1;
 		else
 			return 0;
@@ -110,23 +110,22 @@ int Checks::straight(vector<int>dvalues)
 		return 0;
 } // end straight.
 //working
-int Checks::threeofakind(vector<int> dvalues)
+int Checks::threeofakind(vector<int> determineValues)
 {
 
-	vector<int> test;
 	test.clear();
 
-	sort(dvalues.begin(), dvalues.end());
+	sort(determineValues.begin(), determineValues.end());
 
-	for (size_t z = 0; z < dvalues.size(); z++)
+	for (size_t z = 0; z < determineValues.size(); z++)
 	{
-		for (size_t j = 1; j < dvalues.size(); j++)
+		for (size_t j = 1; j < determineValues.size(); j++)
 		{
 			if (j != z)
 			{
-				if (dvalues[z] == dvalues[j])
+				if (determineValues[z] == determineValues[j])
 				{
-					test.push_back(dvalues[z]);
+					test.push_back(determineValues[z]);
 
 				}
 			}
@@ -142,22 +141,22 @@ int Checks::threeofakind(vector<int> dvalues)
 
 }//working
 //working 
-int Checks::fourofakind(vector<int> dvalues)
+int Checks::fourofakind(vector<int> determineValues)
 {
-	vector<int> test;
+	
 	test.clear();
 	//int z;
-	sort(dvalues.begin(), dvalues.end());
+	sort(determineValues.begin(), determineValues.end());
 
-	for (size_t z = 0; z < dvalues.size(); z++)
+	for (size_t z = 0; z < determineValues.size(); z++)
 	{
-		for (size_t j = 1; j < dvalues.size(); j++)
+		for (size_t j = 1; j < determineValues.size(); j++)
 		{
 			if (j != z)
 			{
-				if (dvalues[z] == dvalues[j])
+				if (determineValues[z] == determineValues[j])
 				{
-					test.push_back(dvalues[j]);
+					test.push_back(determineValues[j]);
 
 				}
 			}
@@ -172,22 +171,21 @@ int Checks::fourofakind(vector<int> dvalues)
 
 }
 //working
-int Checks::fullhouse(vector<int> dvalues)
+int Checks::fullhouse(vector<int> determineValues)
 {
-	vector<int> test;
 	test.clear();
 	
-	sort(dvalues.begin(), dvalues.end());
+	sort(determineValues.begin(), determineValues.end());
 
-	for (size_t z = 0; z < dvalues.size(); z++)
+	for (size_t z = 0; z < determineValues.size(); z++)
 	{
-		for (size_t j = 0; j < dvalues.size(); j++)
+		for (size_t j = 0; j < determineValues.size(); j++)
 		{
 			if (j != z)
 			{
-				if (dvalues[z] == dvalues[j])
+				if (determineValues[z] == determineValues[j])
 				{
-					test.push_back(dvalues[j]);
+					test.push_back(determineValues[j]);
 
 				}
 			}
@@ -203,7 +201,7 @@ int Checks::fullhouse(vector<int> dvalues)
 	return 0;
 }
 //
-int Checks::FindHighCard()
+int Checks::FindHighCard(vector<string>hand,vector<string>cpuhand)
 {
 	vector<int> testhand;
 	vector<int> cputesthand;
@@ -341,16 +339,16 @@ int Checks::FindHighCard()
 // determing hand checks
 int Checks::DetermineHand(vector<int >values, vector<char>suits)
 {
-	dvalues.empty();
-	dsuits.empty();
-	dvalues = values;
-	dsuits = suits;
+	determineValues.empty();
+	determineSuits.empty();
+	determineValues = values;
+	determineSuits = suits;
 
-	sort(dvalues.begin(), dvalues.end());
+	sort(determineValues.begin(), determineValues.end());
 
-	if ((flush(dsuits)) && (straight(dvalues)))
+	if ((flush(determineSuits)) && (straight(determineValues)))
 	{
-		if (dvalues[7] == 14)
+		if (determineValues[7] == 14)
 		{
 			return 100;
 		}
@@ -359,37 +357,37 @@ int Checks::DetermineHand(vector<int >values, vector<char>suits)
 			return 90;
 		}
 	}
-	else if (flush(dsuits) == 1)
+	else if (flush(determineSuits) == 1)
 	{
 		return 80;
 	}
-	else if (straight(dvalues) == 1)
+	else if (straight(determineValues) == 1)
 	{
 		return 70;
 	}
-	else if (fourofakind(dvalues) == 1)
+	else if (fourofakind(determineValues) == 1)
 	{
 		return 60;
 	}
-	else if (fullhouse(dvalues) == 1)
+	else if (fullhouse(determineValues) == 1)
 	{
 		return 50;
 	}
-	else if (threeofakind(dvalues) == 1)
+	else if (threeofakind(determineValues) == 1)
 	{
 		return 40;
 	}
-	else if (ispair(dvalues) == 2)
+	else if (ispair(determineValues) == 2)
 	{
 		return 30;
 	}
-	else if (ispair(dvalues) == 1)
+	else if (ispair(determineValues) == 1)
 	{
 		return 20;
 	}
 	else 
 	{
-		return dvalues.back();
+		return determineValues.back();
 	}
 }
 
@@ -437,11 +435,11 @@ string Checks::handText(int val)
 	}
 }
 //determine the winner
-void Checks::determine(int PlayerHandValue, int CpuHandValue)
+void Checks::determine(int PlayerHandValue, int CpuHandValue, string result,int cash,int cpucash,int pot,vector<string> hand,vector<string>cpuhand)
 {
 	if (PlayerHandValue == CpuHandValue)
 	{
-		int test = FindHighCard();
+		int test = FindHighCard(hand,cpuhand);
 
 		if (test == 1)
 		{
@@ -475,7 +473,7 @@ void Checks::determine(int PlayerHandValue, int CpuHandValue)
 	}
 
 }
-void Checks::FoldValue()
+void Checks::FoldValue(bool playerFold,int cash,int cpucash,int pot,int bet)
 {
 	if (playerFold)
 	{
@@ -483,7 +481,7 @@ void Checks::FoldValue()
 		cash = cash - bet;
 	}
 }
-void Checks::FoldValueC()
+void Checks::FoldValueC(bool playerFold, int cash, int cpucash, int pot, int bet)
 {
 	if (playerFold)
 	{

@@ -6,44 +6,7 @@
 #include "Hands.h"
 #include "State.h"
 
-#define MaxNo_Menu 5
-#define MaxNo_Menu1 3
-#define MaxNo_Menu2 3
 
-vector<string>playerhand;
-vector<string>cards;
-vector<string>deck;
-vector<string>hand;
-vector<string>cpuhand;
-vector<string>tablehand;
-vector<string> computerhand;
-vector<int> PlayerValues;
-vector<char> psuits;
-vector<int> cvalues;
-vector<char> csuits;
-bool foldc;
-bool playerFold;
-bool NewGameMenu;
-bool allin;
-bool duringhand;
-int cash;
-int cpucash;
-
-int pot;
-int bet;
-int cpubet;
-int PlayerHandValue;
-int CpuHandValue;
-int g;
-int random;
-
-string inhand;
-string computerHandText;
-string result;
-string PressEnterToContinue;
-string fold;
-string arrows;
-string enter;
 
 Hands hands;
 DrawCard drawcard;
@@ -57,7 +20,6 @@ GamePlay::GamePlay()
 void GamePlay::Clear()
 {
 	playerhand.clear();
-	cards.clear();
 	deck.clear();
 	hand.clear();
 	cpuhand.clear();
@@ -149,15 +111,19 @@ void GamePlay::Start() //What user will see first, displays start money (Omoney)
 
 }
 
+void GamePlay::makeHands()
+{
+	computerHandText = "??????";
+	deck = hands.createdeck(deck);
+	tablehand = hands.tablecards(deck,tablehand, 8);
+	hand = hands.playercard(deck,hand);
+	cpuhand = hands.cpucard(deck,cpuhand);
+	Cards();//creating the hands  
+}
 void GamePlay::Flop()
 {
 	Setup();
-	computerHandText = "??????";
-	hands.createdeck(deck);
-	hands.tablecards(deck, 8);
-	hands.playercard(deck);
-	hands.cpucard(deck);
-	Cards();//creating the hands  
+	makeHands();
 	getValues();
 	uiText();
 	betSystem();
@@ -166,23 +132,21 @@ void GamePlay::Flop()
 
 void GamePlay::Turn()
 {
-	Machine m;
 
-	m.pregame_state();
-	//Setup();
-	//hands.tablecards(deck, 9);
-	//Cards();
-	//getValues();
-	//uiText();
-	//betSystem();
-	//River();
+	Setup();
+	tablehand = hands.tablecards(deck, tablehand,  9);
+	Cards();
+	getValues();
+	uiText();
+	betSystem();
+	River();
 }
 
 void GamePlay::River()
 {
 	Setup();
-	hands.tablecards(deck, 10);
-	Cards();//creating the hands  
+	tablehand = hands.tablecards(deck, tablehand, 10);
+	Cards(); //creating the hands  
 	getValues();
 	uiText();
 	betSystem();
@@ -197,7 +161,7 @@ void GamePlay::finalCards()
 	shows = true;
 
 	system("cls");
-	hands.tablecards(deck, 10);
+	tablehand = hands.tablecards(deck, tablehand, 10);
 	Cards();
 	getValues();
 	
@@ -206,7 +170,7 @@ void GamePlay::finalCards()
 		PlayerHandValue = 0;
 	}
 	computerHandText = checks.handText(CpuHandValue);
-	checks.determine(PlayerHandValue, CpuHandValue);
+	checks.determine(PlayerHandValue, CpuHandValue,result,cash,cpucash,pot,hand,cpuhand);
 
 	uiText();
 	drawcard.createhand(hand, 25, 40);
@@ -463,6 +427,7 @@ void GamePlay::CpuBetting(int CpuHandValue)
 			cpubet = 0;
 			cpucash = cpucash - cpubet;
 			pot = pot + cpubet;
+			
 			//thirdhand();
 		}
 	}

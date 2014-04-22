@@ -4,6 +4,11 @@
 #include <iostream>
 #include "Aesthetics.h"
 #include "GamePlay.h"
+#include "Checks.h"
+#include "Poker.h"
+#include "Deck.h"
+#include "DrawCard.h"
+#include "Hands.h"
 
 using namespace std;
 
@@ -50,12 +55,11 @@ class PREGAME_STATE : public State
 public:
 	PREGAME_STATE()
 	{
+		system("cls");
 		cout << " PREGAME_STATE-ctor ";
-		gp.Clear();
 		aesthetics.SetWindow(100, 55); // Set windows size
 		aesthetics.header(); // calling our game header
 		aesthetics.MainMenu(); // calling our menu system
-		cout << "PREGAME STATE YAY!";
 	}
 
 	~PREGAME_STATE()
@@ -71,9 +75,12 @@ public:
 class SHUFFLE_STATE : public State
 {
 public:
-	SHUFFLE_STATE()
+	vector<string> deck;
+	Deck<string> dk;
+
+	 SHUFFLE_STATE()
 	{
-		cout << " SHUFFLE_STATE-ctor ";
+		setDeck(deck);
 	};
 	~SHUFFLE_STATE()
 	{
@@ -83,6 +90,8 @@ public:
 	void pregame_state(Machine *m);
 	void deal_state(Machine *m);
 	void flop_state(Machine *m);
+
+	void setDeck(vector<string>& temp);
 };
 
 class DEAL_STATE : public State

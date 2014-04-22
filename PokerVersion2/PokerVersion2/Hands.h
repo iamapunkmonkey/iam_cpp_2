@@ -1,17 +1,25 @@
 #ifndef HANDS_H
 #define HANDS_H
+#include "State.h"
+#include "Aesthetics.h"
+#include "GamePlay.h"
+#include "Checks.h"
+#include "Poker.h"
+#include "Deck.h"
+#include "DrawCard.h"
 
 
 class Hands
 {
 public:
-	void createdeck(vector<string>& deck);
-	void playercard(vector<string>& deck);
-	void cpucard(vector<string>&deck);
-	void tablecards(vector<string>& deck, int x); 
+	vector<string> createdeck(vector<string>& deck);
+	vector<string> playercard(vector<string>& deck,vector<string>);
+	vector<string> cpucard(vector<string>&deck,vector<string>);
+	vector<string> tablecards(vector<string>& deck,vector<string>, int x); 
 	vector<string> completeHand(vector<string> tablehand, vector<string> passedHand);
 	vector<int> handValue(vector<string> passedHand);
 	vector<char> getSuit(vector<string>passedHand);
+	
 };
 
 #endif

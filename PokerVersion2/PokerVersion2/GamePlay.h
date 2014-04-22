@@ -1,37 +1,48 @@
 #ifndef GAMEPLAY_H
 #define GAMEPLAY_H
 
-
-extern vector<string>deck;
-extern vector<string>cards;
-extern vector<string>hand;
-extern vector<string>cpuhand;
-extern vector<string>tablehand;
-
-
-extern bool playerFold;
-
-extern int cash;
-extern int cpucash;
-extern int pot;
-extern int bet;
-extern int cpubet;
-extern int PlayerHandValue;
-extern int CpuHandValue;
-
-extern string result;
-
-
-
-
-
-
+#define MaxNo_Menu 5
+#define MaxNo_Menu1 3
+#define MaxNo_Menu2 3
 
 class GamePlay
 {
-
-
 public:
+	vector<string>playerhand;
+	vector<string>cards;
+	vector<string>deck;
+	vector<string>hand;
+	vector<string>cpuhand;
+	vector<string>tablehand;
+	vector<string> computerhand;
+	vector<int> PlayerValues;
+	vector<char> psuits;
+	vector<int> cvalues;
+	vector<char> csuits;
+	bool foldc;
+	bool playerFold;
+	bool NewGameMenu;
+	bool allin;
+	bool duringhand;
+	int cash;
+	int cpucash;
+
+	int pot;
+	int bet;
+	int cpubet;
+	int PlayerHandValue;
+	int CpuHandValue;
+	int g;
+	int random;
+
+	string inhand;
+	string computerHandText;
+	string result;
+	string PressEnterToContinue;
+	string fold;
+	string arrows;
+	string enter;
+
 
 	bool win;
 	bool lose;
@@ -75,6 +86,7 @@ public:
 	void betSystem();
 	void Clears();
 	void getValues();
+	void makeHands();
 	GamePlay();
 
 

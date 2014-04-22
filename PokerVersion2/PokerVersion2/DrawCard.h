@@ -7,6 +7,9 @@ class DrawCard
 {
 
 public:
+
+	vector<string>cards;
+
 	void DrawingCards(string, vector<string>, int, int, int);
 
 	void createhand(vector<string> passedCards, int x, int y);

@@ -14,6 +14,12 @@
 using namespace std;
 using std::string;
 
+
+#define MaxNo_Menu 5
+#define MaxNo_Menu1 3
+#define MaxNo_Menu2 3
+//if  player checks, and cpu bets needs menu for call/fold for player
+#define CPUBet 2
 class Aesthetics
 {
 public:
@@ -30,6 +36,7 @@ public:
 	void header();
 	void MainMenu();
 	void Credits();
+
 
 	//
 

@@ -53,7 +53,7 @@ template <class T> vector<T> Deck<T>::createdeck(vector<T> playable)
 	{
 		for (size_t j = 0; j < values; ++j)
 		{
-			if (deck.size() < 52)
+			if (playable.size() < 52)
 			{
 				card = cardValue[j] + cardSuit[i];
 				playable.push_back(card);

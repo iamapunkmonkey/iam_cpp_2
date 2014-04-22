@@ -1,28 +1,25 @@
-#include "Aesthetics.h"
-#include "GamePlay.h"
-#include "Checks.h"
-#include "Poker.h"
-#include "Deck.h"
-#include "DrawCard.h"
 #include "Hands.h"
 
 
+Machine *m;
+Deck<string> dk;
+SHUFFLE_STATE ss;
 
-
-
-
-
-void Hands::createdeck(vector<string>& deck)
+vector<string> Hands::createdeck(vector<string>& deck)
 {
-
-	Deck<string> dk;
+	//Deck<string> dk;
+	//deck = dk.createdeck(deck);
+	//deck = dk.shuffle(deck);
 	deck = dk.createdeck(deck);
 	deck = dk.shuffle(deck);
+	//m->setCurrent(new SHUFFLE_STATE());
+	//ss.setDeck(deck);
+	return deck;
 }
 
 
 //pushback to hands
-void Hands::playercard(vector<string>& deck)
+vector<string> Hands::playercard(vector<string>& deck,vector<string> hand)
 {
 
 	hand.clear();
@@ -34,9 +31,9 @@ void Hands::playercard(vector<string>& deck)
 		hand.push_back(deck[j]);
 	}
 
-
+	return hand;
 }
-void Hands::cpucard(vector<string>&deck)
+vector<string> Hands::cpucard(vector<string>&deck,vector<string> cpuhand)
 {
 	cpuhand.clear();
 	size_t  z;
@@ -45,8 +42,9 @@ void Hands::cpucard(vector<string>&deck)
 	{
 		cpuhand.push_back(deck[z]);
 	}
+	return cpuhand;
 }
-void Hands::tablecards(vector<string>& deck, int x)
+vector<string> Hands::tablecards(vector<string>& deck,vector<string>tablehand, int x)
 {
 	tablehand.clear();
 
@@ -54,7 +52,7 @@ void Hands::tablecards(vector<string>& deck, int x)
 	{
 		tablehand.push_back(deck[j]);
 	}
-
+	return tablehand;
 }
 
 vector<string> Hands::completeHand(vector<string> tablehand, vector<string> passedHand)
