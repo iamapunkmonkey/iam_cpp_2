@@ -24,6 +24,7 @@ public:
 	bool NewGameMenu;
 	bool allin;
 	bool duringhand;
+	bool playerCheck;
 	int cash;
 	int cpucash;
 

@@ -358,6 +358,7 @@ void GamePlay::betSystem()
 		playerFold = true;
 		finalCards();
 	}
+
 	getValues();
 	Betting(bet); // player betting method passing in the value stored at bet
 	CpuBetting(CpuHandValue);
@@ -388,6 +389,7 @@ void GamePlay::Betting(int bet)
 		else if (bet == 0)
 		{
 			bet = 0;
+			playerCheck = true;
 			cash = cash - bet;
 			pot = pot + bet;
 		}
@@ -396,7 +398,28 @@ void GamePlay::Betting(int bet)
 }
 void GamePlay::CpuBetting(int CpuHandValue)
 {
-	if (cpucash > 0)
+
+	if (playerCheck = true)
+	{
+		if (CpuHandValue >= 90)
+		{
+			printf("90");
+		}
+		else if (CpuHandValue < 90 && CpuHandValue >= 50)
+		{
+			printf("50-90");
+		}
+		else if (CpuHandValue < 50 && CpuHandValue >= 6)
+		{
+			printf("6-50");
+		}
+		else if (CpuHandValue < 5)
+		{
+			printf("5");
+		}
+	}
+
+	if (cpucash > 0 && !playerCheck)
 	{
 		if (CpuHandValue >= 90)
 		{
@@ -431,6 +454,8 @@ void GamePlay::CpuBetting(int CpuHandValue)
 			//thirdhand();
 		}
 	}
+
+	playerCheck = false;
 }
 void GamePlay::CpuFold(int CpuHandValue)
 {

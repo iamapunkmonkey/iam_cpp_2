@@ -57,6 +57,7 @@ public:
 	{
 		system("cls");
 		cout << " PREGAME_STATE-ctor ";
+		aesthetics.SetWindow(200, 55);
 		aesthetics.SetWindow(100, 55); // Set windows size
 		aesthetics.header(); // calling our game header
 		aesthetics.MainMenu(); // calling our menu system
