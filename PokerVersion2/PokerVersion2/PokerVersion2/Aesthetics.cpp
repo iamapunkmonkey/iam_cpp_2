@@ -11,6 +11,12 @@
 HWND hwnd = GetConsoleWindow();
 
 HANDLE con = GetStdHandle(STD_OUTPUT_HANDLE);
+
+void Aesthetics::Start()
+{
+	debugBOOL = true;
+	Machine m;
+}
 void Aesthetics::gotoxy(int x, int y)
 {
 	COORD Coord;
@@ -23,6 +29,12 @@ void Aesthetics::gotoxy(int x, int y)
 void Aesthetics::textattr(int color)
 {
 	SetConsoleTextAttribute(con, color);
+}
+
+void Aesthetics::setBoolToAlertPlayer()
+{
+	debugBOOL = true;
+	test = true;
 }
 
 void Aesthetics::mainText()
@@ -50,9 +62,22 @@ void Aesthetics::mainText()
 	printf("%s", "CPU Money");
 	gotoxy(71, 30);
 	textattr(15);
-	printf("%s", "Instructions:");
+	Instructions = "Instructions:";
+
+	//for some reason debugBOOL is always false or true whatever i state in this if loop i have no idea why need to fix, check gameplay setbooltoalert function, i made a new
+	//function in aesthetics and check whatever make sure when you work on this tomorrow to follow what you did
+	if (debugBOOL)
+	{
+		Instructions = "test";
+		textattr(4);
+		cout << Instructions;
+		gotoxy(71, 33);
+		textattr(15);
+	}
+	cout << Instructions;
 	gotoxy(71, 33);
 	textattr(15);
+
 	cout << "[<-- --> arrow keys to move]";
 	gotoxy(71, 36);
 	textattr(15);
@@ -101,8 +126,6 @@ void Aesthetics::changingText(int playerMoney, string playerHand, string compute
 
 void Aesthetics::text1(string words)
 {
-
-
 	system("cls");
 	gotoxy(1, 20);
 	textattr(15);
@@ -112,7 +135,6 @@ void Aesthetics::text1(string words)
 
 void Aesthetics::header()
 {
-
 	randomHeaderCards();
 	gotoxy(35, 20); textattr(15); cout << "C++ II Final : Console Poker" << endl;
 	gotoxy(35, 21); cout << "By: Jordan Max & Neil Inglese" << endl;
@@ -166,7 +188,7 @@ void Aesthetics::MainMenu()
 				printf("%s", menu_list[i]);
 				i = 2;
 			}
-			break;
+			//break;
 
 			//down
 		case 80:
@@ -191,7 +213,7 @@ void Aesthetics::MainMenu()
 			if (i == 0) { GamePlay gp;  gp.Start(); }
 			if (i == 1) { Credits(); }
 			if (i == 2) { exit(0); }
-			break;
+			//break;
 		}
 	}
 
@@ -203,7 +225,7 @@ int Aesthetics::raiseMenu(int valueOfCPUBet)
 	char *menu_list[RaiseMenu] = { "Call", "Fold" };
 	int i,
 		xpos[RaiseMenu] = { 30, 45 },
-		ypos = 35;
+		ypos = 53;
 
 	// list the menu
 	for (i = 0; i< RaiseMenu; ++i)
@@ -215,7 +237,7 @@ int Aesthetics::raiseMenu(int valueOfCPUBet)
 	}
 
 	// make menu available to choose
-	i = 0; // set i to 0 to start menu at the begining
+	i = 0; // set i to 0 to start menu at the beginning
 	while (1)
 	{
 
@@ -281,9 +303,24 @@ int Aesthetics::raiseMenu(int valueOfCPUBet)
 			break;
 		}
 	}
+	test = false;
 }
 
 //moved gameplay menu here, makes more sense
+
+//void Aesthetics::newMenuForCheckMenu(int xpos, int ypos, char[] menu_list)
+//{
+//	for (i = 0; i < MaxNo_Menu; ++i)
+//	{
+//
+//		gotoxy(xpos[i], ypos);
+//		test = true;
+//		textattr(3);
+//		if (!test)
+//			textattr(2);
+//		printf("%s", menu_list[i]);
+//	}
+//}
 int Aesthetics::gameplayMenu()
 {
 	char *menu_list[MaxNo_Menu] = { "Check", "Bet 10", "Bet 50", "All In", "Fold" };
@@ -293,11 +330,19 @@ int Aesthetics::gameplayMenu()
 		ypos = 53;
 
 	// list the menu
+	//call function for for-loop
 	for (i = 0; i< MaxNo_Menu; ++i)
 	{
 
 		gotoxy(xpos[i], ypos);
 		textattr(3);
+		
+		if (test)
+		{
+			textattr(0);
+		}
+			
+			
 		printf("%s", menu_list[i]);
 	}
 
@@ -308,6 +353,11 @@ int Aesthetics::gameplayMenu()
 
 		gotoxy(xpos[i], ypos);// set cursor position
 		textattr(11); // this sets menu item to green text
+		if (test)
+		{
+			textattr(0);
+			test = false;
+		}
 		printf("%s", menu_list[i]); // print out highlighted item in new color
 
 		/* note : 72 -> UP button
@@ -318,6 +368,7 @@ int Aesthetics::gameplayMenu()
 		//getting key information switch
 		switch (_getch())
 		{
+
 			//right
 		case 75:
 			if (i>0)

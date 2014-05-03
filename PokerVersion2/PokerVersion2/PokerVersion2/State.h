@@ -35,6 +35,7 @@ public:
 	PREGAME_STATE()
 	{
 		system("cls");
+		aesthetics.debugBOOL = true;
 		aesthetics.SetWindow(100, 55); // Set windows size
 		aesthetics.centerWindow();
 		aesthetics.header(); // calling our game header

@@ -38,6 +38,9 @@ public:
 	void changingText(int, string, string,int,string,int,string);
 	void text1(string);
     void SetWindow(int, int);
+	void Start();
+	void setBoolToAlertPlayer();
+	//void newMenuForCheckMenu(int, int, char[]);
 	
 	void header();
 	void MainMenu();
@@ -50,6 +53,8 @@ public:
 	int centerWindow();
 
 	bool test;
+	bool debugBOOL;
+	string Instructions;
 };
 
 

@@ -244,14 +244,18 @@ void GamePlay::betSystem()
 {
 
 	random = rand() % 10;
-	if (random < 3)
+	if (random < 3 && !aesthetics.test)
 	{
 		CpuFold(CpuHandValue);
 	}
 
 
 	// method for cpu betting logic, passing in CpuHandValue to determine what it does
+	
 	bet = aesthetics.gameplayMenu(); // storing the variable returned from menu class to bet
+	
+	
+	
 	if (bet == 100)
 	{
 		allin = true;
@@ -266,10 +270,10 @@ void GamePlay::betSystem()
 		playerFold = true;
 		finalCards();
 	}
-
-	getValues();
-	Betting(bet); // player betting method passing in the value stored at bet
-	CpuBetting(CpuHandValue);
+		getValues();
+		Betting(bet); // player betting method passing in the value stored at bet
+		CpuBetting(CpuHandValue);
+	
 }
 void GamePlay::Betting(int bet)
 {
@@ -310,13 +314,24 @@ void GamePlay::Betting(int bet)
 
 	}
 }
+
+void GamePlay::raiseMenu(int cpube2t)
+{
+	bet = aesthetics.raiseMenu(cpubet);
+}
+
 void GamePlay::CpuBetting(int CpuHandValue)
 {
-	if (playerCheck = true)
+	if (playerCheck)
 	{
-		aesthetics.test = true;
-		bet = aesthetics.raiseMenu(cpubet);
 		aesthetics.test = false;
+		aesthetics.setBoolToAlertPlayer();
+		aesthetics.mainText();
+		bet = aesthetics.gameplayMenu(); // storing the variable returned from menu class to bet
+		//change Instructions to "ALERT: CPU raised [hit enter to call or fold]"
+		
+		raiseMenu(cpubet);
+
 		if (CpuHandValue > 0) //0 for testing
 		{
 			
@@ -373,7 +388,7 @@ void GamePlay::CpuBetting(int CpuHandValue)
 					cpucash = cpucash - cpubet;
 					pot = pot + cpubet;
 					//need to have player now have new menu for raise
-					bet = aesthetics.raiseMenu(cpubet);
+					//bet = aesthetics.raiseMenu(cpubet);
 				}
 			}
 
@@ -419,6 +434,8 @@ void GamePlay::CpuBetting(int CpuHandValue)
 
 	if (cpucash > 0 && !playerCheck)
 	{
+
+		
 		if (CpuHandValue >= 90)
 		{
 
@@ -436,6 +453,7 @@ void GamePlay::CpuBetting(int CpuHandValue)
 		}
 		else if (CpuHandValue < 50 && CpuHandValue >= 6)
 		{
+
 			cpubet = 10;
 			cpucash = cpucash - cpubet;
 			pot = pot + cpubet;

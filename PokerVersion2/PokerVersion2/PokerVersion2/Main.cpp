@@ -5,5 +5,9 @@
 
 int main()
 {
-	Machine m;
+	Aesthetics a;
+	a.Start();
+	
+	
+	
 }

@@ -76,6 +76,7 @@ public:
 	void makeHands();
 	void determine();
 	void gameoverCheck();
+	void raiseMenu(int);
 	GamePlay();
 
 
