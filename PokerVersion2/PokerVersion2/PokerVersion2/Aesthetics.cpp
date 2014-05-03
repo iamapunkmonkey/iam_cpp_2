@@ -60,25 +60,29 @@ void Aesthetics::mainText()
 	gotoxy(30, 13);
 	textattr(2);
 	printf("%s", "CPU Money");
-	gotoxy(71, 30);
-	textattr(15);
-	Instructions = "Instructions:";
 
+	
+	if (!debugBOOL)
+	{
+		Instructions = "Instructions:";
+		gotoxy(71, 30);
+		textattr(15);
+		cout << Instructions;
+	}
 	//for some reason debugBOOL is always false or true whatever i state in this if loop i have no idea why need to fix, check gameplay setbooltoalert function, i made a new
 	//function in aesthetics and check whatever make sure when you work on this tomorrow to follow what you did
 	if (debugBOOL)
 	{
-		Instructions = "test";
+		Instructions = "!!! CPU RAISED xx CHIPS !!!"; //put amount CPU is raising
 		textattr(4);
+		gotoxy(71, 30);
 		cout << Instructions;
-		gotoxy(71, 33);
-		textattr(15);
+		debugBOOL = false;
 	}
-	cout << Instructions;
+	//cout << Instructions;
 	gotoxy(71, 33);
 	textattr(15);
-
-	cout << "[<-- --> arrow keys to move]";
+	cout << "[arrow keys to move]";
 	gotoxy(71, 36);
 	textattr(15);
 	cout << "[Hit Enter]";
