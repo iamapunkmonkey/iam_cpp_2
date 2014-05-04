@@ -51,10 +51,12 @@ public:
 	int gameplayMenu();
 	void ShowLastSystemError();
 	int centerWindow();
-
-	bool test;
-	bool debugBOOL;
+	void receiveCpuBetFromGamePlay(int);
+	bool ifTrueChangeOrigMenuToBlack;
+	bool ifTrueChangeUserAlert;
 	string Instructions;
+
+	int displayCpuBet;
 };
 
 

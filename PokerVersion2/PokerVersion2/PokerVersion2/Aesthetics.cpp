@@ -11,10 +11,12 @@
 HWND hwnd = GetConsoleWindow();
 
 HANDLE con = GetStdHandle(STD_OUTPUT_HANDLE);
+GamePlay gp;
+
 
 void Aesthetics::Start()
 {
-	debugBOOL = true;
+	ifTrueChangeUserAlert = true;
 	Machine m;
 }
 void Aesthetics::gotoxy(int x, int y)
@@ -33,8 +35,15 @@ void Aesthetics::textattr(int color)
 
 void Aesthetics::setBoolToAlertPlayer()
 {
-	debugBOOL = true;
-	test = true;
+	ifTrueChangeUserAlert = true;
+	ifTrueChangeOrigMenuToBlack = true;
+}
+
+void Aesthetics::receiveCpuBetFromGamePlay(int _cpubet)
+{
+	int newCpuBetInt = NULL;
+	newCpuBetInt = _cpubet;
+	displayCpuBet = newCpuBetInt;
 }
 
 void Aesthetics::mainText()
@@ -62,30 +71,44 @@ void Aesthetics::mainText()
 	printf("%s", "CPU Money");
 
 	
-	if (!debugBOOL)
+	if (!ifTrueChangeUserAlert)
 	{
 		Instructions = "Instructions:";
 		gotoxy(71, 30);
 		textattr(15);
 		cout << Instructions;
+		gotoxy(71, 33);
+		textattr(15);
+		cout << "<-- --> arrow keys to move";
+
+		gotoxy(71, 36);
+		textattr(15);
+		cout << "Hit Enter";
+
 	}
-	//for some reason debugBOOL is always false or true whatever i state in this if loop i have no idea why need to fix, check gameplay setbooltoalert function, i made a new
-	//function in aesthetics and check whatever make sure when you work on this tomorrow to follow what you did
-	if (debugBOOL)
+
+	if (ifTrueChangeUserAlert)
 	{
-		Instructions = "!!! CPU RAISED xx CHIPS !!!"; //put amount CPU is raising
+		//cout << "!!! CPU RAISED %s CHIPS !!!", teststring; //put amount CPU is raising
 		textattr(4);
 		gotoxy(71, 30);
-		cout << Instructions;
-		debugBOOL = false;
+		cout << "!!! CPU RAISED " << displayCpuBet << " CHIPS !!!";
+		ifTrueChangeUserAlert = false;
+
+		gotoxy(71, 33);
+		textattr(0);
+		cout << "<-- --> arrow keys to move";
+
+		gotoxy(71, 33);
+		textattr(5);
+		cout << "Hit Enter To Call Or Fold";
+
+
+		gotoxy(71, 36);
+		textattr(0);
+		cout << "Hit Enter";
 	}
 	//cout << Instructions;
-	gotoxy(71, 33);
-	textattr(15);
-	cout << "[arrow keys to move]";
-	gotoxy(71, 36);
-	textattr(15);
-	cout << "[Hit Enter]";
 
 	textattr(13);
 	gotoxy(55, 28);
@@ -307,7 +330,7 @@ int Aesthetics::raiseMenu(int valueOfCPUBet)
 			break;
 		}
 	}
-	test = false;
+	ifTrueChangeOrigMenuToBlack = false;
 }
 
 //moved gameplay menu here, makes more sense
@@ -318,9 +341,9 @@ int Aesthetics::raiseMenu(int valueOfCPUBet)
 //	{
 //
 //		gotoxy(xpos[i], ypos);
-//		test = true;
+//		ifTrueChangeOrigMenuToBlack = true;
 //		textattr(3);
-//		if (!test)
+//		if (!ifTrueChangeOrigMenuToBlack)
 //			textattr(2);
 //		printf("%s", menu_list[i]);
 //	}
@@ -341,7 +364,7 @@ int Aesthetics::gameplayMenu()
 		gotoxy(xpos[i], ypos);
 		textattr(3);
 		
-		if (test)
+		if (ifTrueChangeOrigMenuToBlack)
 		{
 			textattr(0);
 		}
@@ -357,10 +380,10 @@ int Aesthetics::gameplayMenu()
 
 		gotoxy(xpos[i], ypos);// set cursor position
 		textattr(11); // this sets menu item to green text
-		if (test)
+		if (ifTrueChangeOrigMenuToBlack)
 		{
 			textattr(0);
-			test = false;
+			ifTrueChangeOrigMenuToBlack = false;
 		}
 		printf("%s", menu_list[i]); // print out highlighted item in new color
 

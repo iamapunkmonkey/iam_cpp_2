@@ -37,6 +37,7 @@ public:
 	int a;
 	int b;
 	int c;
+	int transferCpuBetToAesthetics(int);
 	vector<int> betVector;
 
 	string inhand;

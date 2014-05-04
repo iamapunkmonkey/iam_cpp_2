@@ -7,7 +7,6 @@
 #include "State.h"
 
 
-
 Hands hands;
 DrawCard drawcard;
 Checks checks;
@@ -115,6 +114,13 @@ void GamePlay::uiText()
 
 	aesthetics.mainText();
 	aesthetics.changingText(cash, inhand, computerHandText, cpucash, fold, pot, result);
+}
+
+int GamePlay::transferCpuBetToAesthetics(int _cpubet)
+{
+	_cpubet = cpubet;
+
+	return _cpubet;
 }
 
 void GamePlay::Start() //What user will see first, displays start money (Omoney)
@@ -244,7 +250,7 @@ void GamePlay::betSystem()
 {
 
 	random = rand() % 10;
-	if (random < 3 && !aesthetics.test)
+	if (random < 3 && !aesthetics.ifTrueChangeOrigMenuToBlack)
 	{
 		CpuFold(CpuHandValue);
 	}
@@ -324,14 +330,6 @@ void GamePlay::CpuBetting(int CpuHandValue)
 {
 	if (playerCheck)
 	{
-		aesthetics.test = false;
-		aesthetics.setBoolToAlertPlayer();
-		aesthetics.mainText();
-		bet = aesthetics.gameplayMenu(); // storing the variable returned from menu class to bet
-		//change Instructions to "ALERT: CPU raised [hit enter to call or fold]"
-		
-		raiseMenu(cpubet);
-
 		if (CpuHandValue > 0) //0 for testing
 		{
 			
@@ -343,6 +341,7 @@ void GamePlay::CpuBetting(int CpuHandValue)
 			if (random < 35)
 			{
 				cpubet = 0;
+				aesthetics.receiveCpuBetFromGamePlay(cpubet);
 			}
 			//*****else if random int is between 35 and 60*****//
 			//**********random int between 1 and 10*****//
@@ -354,6 +353,7 @@ void GamePlay::CpuBetting(int CpuHandValue)
 				{
 					//**************check*****//
 					cpubet = 0;
+					aesthetics.receiveCpuBetFromGamePlay(cpubet);
 				}
 				//**********else*****//
 				//**************bet array 10, 50, all in*****//
@@ -387,6 +387,7 @@ void GamePlay::CpuBetting(int CpuHandValue)
 					cpubet = randomlySelectedFromBetVector;
 					cpucash = cpucash - cpubet;
 					pot = pot + cpubet;
+					aesthetics.receiveCpuBetFromGamePlay(cpubet);
 					//need to have player now have new menu for raise
 					//bet = aesthetics.raiseMenu(cpubet);
 				}
@@ -402,6 +403,7 @@ void GamePlay::CpuBetting(int CpuHandValue)
 				cpubet = 50;
 				cpucash = cpucash - cpubet;
 				pot = pot + cpubet;
+				aesthetics.receiveCpuBetFromGamePlay(cpubet);
 				//need to have player now have new menu for raise
 			}
 			//*****else if random int is 100*****//
@@ -411,6 +413,7 @@ void GamePlay::CpuBetting(int CpuHandValue)
 				cpubet = cpucash;
 				cpucash = cpucash - cpubet;
 				pot = pot + cpubet;
+				aesthetics.receiveCpuBetFromGamePlay(cpubet);
 				//need to have player now have new menu for raise
 			}
 
@@ -442,6 +445,7 @@ void GamePlay::CpuBetting(int CpuHandValue)
 			cpubet = cpucash;
 			cpucash = cpucash - cpubet;
 			pot = pot + cpubet;
+			aesthetics.receiveCpuBetFromGamePlay(cpubet);
 
 		}
 		else if (CpuHandValue < 90 && CpuHandValue >= 50)
@@ -449,6 +453,7 @@ void GamePlay::CpuBetting(int CpuHandValue)
 			cpubet = 50;
 			cpucash = cpucash - cpubet;
 			pot = pot + cpubet;
+			aesthetics.receiveCpuBetFromGamePlay(cpubet);
 
 		}
 		else if (CpuHandValue < 50 && CpuHandValue >= 6)
@@ -457,6 +462,7 @@ void GamePlay::CpuBetting(int CpuHandValue)
 			cpubet = 10;
 			cpucash = cpucash - cpubet;
 			pot = pot + cpubet;
+			aesthetics.receiveCpuBetFromGamePlay(cpubet);
 
 
 		}
@@ -466,9 +472,17 @@ void GamePlay::CpuBetting(int CpuHandValue)
 			cpubet = 0;
 			cpucash = cpucash - cpubet;
 			pot = pot + cpubet;
+			aesthetics.receiveCpuBetFromGamePlay(cpubet);
 
 		}
 	}
+	aesthetics.ifTrueChangeOrigMenuToBlack = false;
+	aesthetics.setBoolToAlertPlayer();
+	aesthetics.mainText();
+
+	bet = aesthetics.gameplayMenu(); // storing the variable returned from menu class to bet
+	//change Instructions to "ALERT: CPU raised [hit enter to call or fold]"
+	raiseMenu(cpubet);
 	playerCheck = false;
 }
 void GamePlay::CpuFold(int CpuHandValue)
