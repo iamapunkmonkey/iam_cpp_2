@@ -1,0 +1,32 @@
+C++ poker created by Neil Inglese and Jordan Max
+--------------------------------------------------
+
+Neil -
+sorted classes into seperate cpp and .h files
+created templated class in deck.h and passing type deck to create the deck and then shuffling cards
+
+Jordan -
+Refacatoring of code, and begun cleaning up variables and error fixing
+created highcard function to determine winner if hands are tied
+
+-- March 30, 2014
+
+Neil-
+
+Neil has been extensively working on our previous Poker program, cleaning up all the code and making it more efficient.
+
+Jordan-
+Jordan has been working on the beginning stages of our DirectX version of our console poker game. So far he has drawn out the triangles needed to be placeholders for cards.
+Next he will be figuring out how to upload images to use for cards. 
+
+--date unknown--
+
+Neil- Neil has been working on the UI and aesthetics for the conclusion of our project. He created a List of computer players and was able to add players and also change
+screen size to acomodate the new cpu players. Neil also worked on fixing up our determine class to see who won the hand. We were able to use code we had to extract data
+and find out who won in a more clean way as opposed to how we were doing it before (virtually no data structure and non-generic code). Neil also did an extensive job at
+making our code generic to be able to use wherever else we would want to use it.
+
+Jordan - Jordan has been working on the AI logic for the conclusion of our project. By creating a linked list of nodes, he was able to use an extremely elementary
+version of bayesian logic to create decision making AI. Based on the hand values of his CPU friends is one factor that helps the AI decide what to do when nobody raises,
+or when another cpu raises. We also use dithering, we use a random variable (that also gets calculated based on what the AI hand is currently) to create a more realistic 
+feel to the AI and also so that it's not as predictable. He hopes to create a smarter AI in the future by implementing fuzzy logic.

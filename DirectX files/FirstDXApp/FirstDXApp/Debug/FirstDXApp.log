@@ -1,0 +1,17 @@
+﻿Build started 3/24/2014 3:27:52 PM.
+     1>Project "C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\FirstDXApp\FirstDXApp.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\FirstDXApp\\" /IDebug\ /I"C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\FirstDXApp\\" /I"Generated Files\\" /IDebug\ /ZI /ZW /ZW:nostdlib /nologo /W3 /WX- /sdl /MP /Od /Oy- /D _DEBUG /D _UNICODE /D UNICODE /D _DEBUG /D WINAPI_FAMILY=WINAPI_FAMILY_APP /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"pch.h" /Fp"Debug\pch.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /wd4453 /wd28204 /FU"C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\Microsoft.VCLibs\12.0\References\CommonConfiguration\neutral\platform.winmd" /FU"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral\Windows.winmd" /FU"C:\Program Files (x86)\Windows Kits\8.1\References\CommonConfiguration\Neutral\Windows.winmd" /analyze- /errorReport:prompt /bigobj App.cpp
+         App.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\Debug\FirstDXApp\FirstDXApp.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\\lib\store" /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\\lib" d2d1.lib d3d11.lib dxgi.lib ole32.lib windowscodecs.lib dwrite.lib kernel32.lib /MANIFEST:NO /DEBUG /PDB:"C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\Debug\FirstDXApp\FirstDXApp.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /APPCONTAINER /WINMD /WINMDFILE:"C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\Debug\FirstDXApp\FirstDXApp.winmd" /DYNAMICBASE /NXCOMPAT /MACHINE:X86 Debug\App.obj
+         Debug\DeviceResources.obj
+         Debug\SampleFpsTextRenderer.obj
+         Debug\Sample3DSceneRenderer.obj
+         Debug\pch.obj
+         FirstDXApp.vcxproj -> C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\Debug\FirstDXApp\FirstDXApp.exe
+     1>Done Building Project "C:\Users\Al Gore Rhythm\documents\visual studio 2013\Projects\FirstDXApp\FirstDXApp\FirstDXApp.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.98
